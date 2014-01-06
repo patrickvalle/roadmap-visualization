@@ -1,0 +1,9 @@
+html { cursor: default; overflow: hidden; }
+body { color: #333; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.modal { overflow: hidden; }
+
+.overlay { fill: none; pointer-events: all;}
+.node { cursor: pointer; stroke: #fff; stroke-width: 1.5px; }
+.link { stroke: #999; stroke-opacity: .6; }
+.label { font-size: 12px; font-weight: lighter; }

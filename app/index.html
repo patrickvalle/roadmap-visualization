@@ -1,0 +1,82 @@
+<!doctype html>
+<!--[if lt IE 7]>    <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <title>Roadmap Visualization</title>
+    <!-- build:css(.tmp) styles/vendor.css -->
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="more-info-modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <p class="content"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="components/jquery/jquery.js"></script>
+    <script src="components/bootstrap/dist/js/boostrap.js"></script>
+    <script src="components/underscore/underscore.js"></script>
+    <script src="components/d3/d3.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/engine.js"></script>
+    <script>
+      var graph = {
+        "nodes":[
+       // Group 1
+       {
+         "name": "Publish PRISM API", 
+         "description": "This is a description of what's going to happen",
+         "group": 1
+       },
+       {"name": "Store plan service config", "group": 1},
+       {"name": "Store plan data", "group": 1},
+       {"name": "Store intra-service rules", "group": 1},
+       // Group 2
+       {"name": "Integrate SOURCE and PRISM", "group": 2},
+       {"name": "Display vendor data", "group": 2},
+       {"name": "Display service offering", "group": 2},
+       {"name": "Display plan services", "group": 2}
+       ],
+       "links":[
+     // Group 1
+     {"source": 1, "target": 0, "value": 1},
+     {"source": 2, "target": 0, "value": 1},
+     {"source": 3, "target": 1, "value": 1},
+     // Group 2
+     {"source": 4, "target": 0, "value": 1},
+     {"source": 5, "target": 4, "value": 1},
+     {"source": 6, "target": 4, "value": 1},
+     {"source": 7, "target": 4, "value": 1}
+     ]};
+     var engine = new Engine().useNodes(graph.nodes).useLinks(graph.links).start();
+   </script>
+   <!-- endbuild -->
+  </body>
+ </html>
