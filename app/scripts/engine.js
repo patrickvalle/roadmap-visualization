@@ -37,6 +37,23 @@ function Engine() {
   	    svg.attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')');
       }
   	}
+    // Setup arrow defnitions (which are referenced by the links via marker-end attributes)
+    svg.append('defs')
+      .selectAll('marker')
+      .data(['arrow'])
+      .enter()
+      .append('marker')
+      .attr('id', function(d) {
+        return d;
+      })
+      .attr('viewBox', '0 -5 10 10')
+      .attr('refX', '36')
+      .attr('refY','0')
+      .attr('markerWidth', 6)
+      .attr('markerHeight', 6)
+      .attr('orient', 'auto')
+      .append('path')
+      .attr('d', 'M0,-5L10,0L0,5');
     // Make an invisible rectangle overlay to capture mouse events (for zooming and panning)
     svg.append('rect')
       .attr('class', 'overlay')
@@ -48,6 +65,9 @@ function Engine() {
   	  .enter()
   	  .append('line')
   	  .attr('class', 'link')
+      .attr('marker-end', function(d) { 
+        return 'url(#arrow)';
+      })
   	  .style('stroke-width', function(d) { 
   		  return Math.sqrt(d.value); 
   	  });
@@ -72,7 +92,7 @@ function Engine() {
         _nodeCurrentlySelected = false;
   	  })
   	  .call(force.drag);
-  	// Add an "on hover" title to each node
+  	// Add an 'on hover' title to each node
   	node.append('title')
   	  .text(function(d) { 
   		  return d.name;
@@ -91,9 +111,9 @@ function Engine() {
   	force.on('tick', function() {
   	  // Setup link placement
   	  link.attr('x1', function(d) { 
-  		  return d.source.x; 
+  		  return d.source.x;
   		}).attr('y1', function(d) { 
-	      return d.source.y; 
+	      return d.source.y;
 	    }).attr('x2', function(d) { 
 	      return d.target.x;
 	    }).attr('y2', function(d) {
@@ -115,7 +135,7 @@ function Engine() {
   };
   
   /**
-   * Displays the "more info" Bootstrap dialog
+   * Displays the 'more info' Bootstrap dialog
    */
   var showMoreInfo = function(title, content) {
     var $modal = $('#more-info-modal');
