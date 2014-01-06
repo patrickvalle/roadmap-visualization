@@ -1,4 +1,4 @@
 roadmap-visualization
 =====================
 
-Roadmap visualization using D3.js
+Roadmap visualization graph using D3.js (http://d3js.org/).
