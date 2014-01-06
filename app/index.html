@@ -3,27 +3,27 @@
 <!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
+  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <title>Roadmap Visualization</title>
-    <!-- build:css(.tmp) styles/vendor.css -->
+    <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap-theme.css">
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-
+  
   <body>
-
+    
     <div id="more-info-modal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-
+    
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="components/jquery/jquery.js"></script>
@@ -46,14 +46,15 @@
     <script src="components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    
     <!-- build:js scripts/main.js -->
     <script src="scripts/engine.js"></script>
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+    
     <script>
      var engine = new Engine().useNodes(graph.nodes).useLinks(graph.links).onRightClick(showMoreInfo).start();
     </script>
-    <!-- endbuild -->
     
   </body>
  </html>
