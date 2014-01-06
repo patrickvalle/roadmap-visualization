@@ -7,7 +7,7 @@ function Engine() {
   var _graphCharge = -2000;
   var _nodes = [];
   var _links = [];
-  var _modalInitialized = false;
+  var _onRightClick = function() {};
   var _nodeCurrentlySelected = false;
   
   /**
@@ -82,7 +82,7 @@ function Engine() {
   		  return color(d.group);
   	  })
   	  .on('contextmenu', function(d) {
-        showMoreInfo(d.name, d.description);
+        _onRightClick(d);
         d3.event.preventDefault();
   	  })
   	  .on('mousedown', function() {
@@ -134,21 +134,6 @@ function Engine() {
   	});
   };
   
-  /**
-   * Displays the 'more info' Bootstrap dialog
-   */
-  var showMoreInfo = function(title, content) {
-    var $modal = $('#more-info-modal');
-    $modal.find('.modal-title').html(title);
-    $modal.find('.modal-body .content').html(content);
-    if(!_modalInitialized) {
-      $modal.modal({'show': true});
-    }
-    else {
-      $modal.modal('show');
-    }
-  };
-  
   this.useNodes = function(nodes) {
     _nodes = nodes;
     return this;
@@ -156,6 +141,11 @@ function Engine() {
   
   this.useLinks = function(links) {
     _links = links;
+    return this;
+  };
+
+  this.onRightClick = function(onRightClick) {
+    _onRightClick = onRightClick;
     return this;
   };
   
